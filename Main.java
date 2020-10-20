@@ -27,7 +27,13 @@ public class Main{
 	    while(Q>0){
 		t = new StringTokenizer(br.readLine());
 		input=Integer.parseInt(t.nextToken());
-		int p=Arrays.binarySearch(arr,input);
+		int p=-1;
+		for(int i=0;i<N;i++){
+			if(input == arr[i]){
+				p = i;
+				break;
+			}
+		}
 		if (p>=0) 
 		    System.out.println(Integer.toString(input)+" found at "+Integer.toString(p+1));
 		else  
