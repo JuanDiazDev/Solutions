@@ -25,7 +25,6 @@ public class Schweisen{
 	int X, Y, price, Q;
 	while((line=br.readLine()) != null && !line.equals("0 0 0")){
 		ArrayList<Point> list = new ArrayList<>();
-		ArrayList<Integer> ll = new ArrayList<>();
 		st = new StringTokenizer(line);
 	        X = Integer.parseInt(st.nextToken());
 		Y = Integer.parseInt(st.nextToken());
@@ -46,33 +45,18 @@ public class Schweisen{
 			int y1 = Integer.parseInt(st.nextToken());
 			int x2 = Integer.parseInt(st.nextToken());
 			int y2 = Integer.parseInt(st.nextToken());
-			int menorX, mayorX, menorY, mayorY;
-			menorX = (x1 < x2) ? x1 : x2;
-			mayorX = (x1>=x2) ? x1 : x2;
-			menorY = (y1 < y2) ? y1 : y2;
-			mayorY = (y1>=y2) ? y1 : y2;
 			for(int i=0;i<list.size();i++){
 			    Point p = list.get(i);
-			    if(menorX<=p.x && mayorX>=p.x && menorY<=p.y && mayorY>=p.y)
+			    if((x1<=p.x && x2>=p.x) || (x2<=p.x && x1>=p.x)){
+				if((y1<=p.y && y2>=p.y) || (y2<=p.y && y1>=p.y))
 				res+=(price*p.sch);
+			    }
 			}
-			ll.add(res);
-		    }
-		    if(Q==1){
-			for(int i=0;i<ll.size();i++){
-			    if(i==ll.size()-1)
-				System.out.println(ll.get(i)+"\n");
-			    else
-				System.out.println(ll.get(i));
-			}
+			System.out.println(res);
 		    }
 		    Q--;
 		}
+		System.out.println("");
 	}
     }
 }
-	    
-			
-			
-		
-	        
