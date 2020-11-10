@@ -20,18 +20,18 @@ class Team{
 }
 
 class Rank implements Comparator<Team>{
-    @Override
-    public int compare(Team a, Team b){
+    
+    @Override public int compare(Team a, Team b){
 	if(a.points != b.points)
-	    return a.points - b.points;
+	    return -a.points + b.points;
 	if(a.basket != b.basket){
-	    if(a.basket > b.basket)
+	    if(a.basket < b.basket)
 		return 1;
 	    return -1;
 	}
 	if(a.scored != b.scored)
-	    return a.scored - b.scored;
-	return b.team - a.team;
+	    return -a.scored + b.scored;
+	return -b.team +a.team;
     }
 }
 
@@ -67,19 +67,21 @@ public class Spurs{
 	    }
 	    for(int i=0;i<t;i++){
 		if(arr[i].received == 0)
-		    arr[i].received = 1;
+		    arr[i].basket = 1;
 		arr[i].basket = ((double)arr[i].scored)/arr[i].received;
 	    }
 	    Arrays.sort(arr, new Rank());
-	    String s = "Instancia " + instancia + "\n" + arr[arr.length-1].team;
-	    for(int i=arr.length-2;i>-1;i--){
+	    String s;
+	    if(instancia>1)
+		s="\n" + "Instancia " + instancia + "\n" + arr[0].team;
+	    else
+		s="Instancia " + instancia + "\n" + arr[0].team;
+	    instancia++;
+	    for(int i=1;i<arr.length;i++){
 		s += " " + arr[i].team;
 	    }
 	    System.out.println(s);
-	    System.out.println();
-	    instancia++;
 	}
     }
 }
-		
-    
+	
