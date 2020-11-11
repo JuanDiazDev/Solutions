@@ -35,7 +35,7 @@ class Rank implements Comparator<Team>{
     }
 }
 
-public class Main{
+public class Spurs{
     public static void main(String[] args) throws IOException{
 	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	String line;
