@@ -35,7 +35,7 @@ class Rank implements Comparator<Team>{
     }
 }
 
-public class Spurs{
+public class Main{
     public static void main(String[] args) throws IOException{
 	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	String line;
@@ -67,8 +67,9 @@ public class Spurs{
 	    }
 	    for(int i=0;i<t;i++){
 		if(arr[i].received == 0)
-		    arr[i].basket = 1;
-		arr[i].basket = ((double)arr[i].scored)/arr[i].received;
+		    arr[i].basket = arr[i].scored;
+		 else
+		    arr[i].basket = ((double)arr[i].scored)/arr[i].received;
 	    }
 	    Arrays.sort(arr, new Rank());
 	    String s;
